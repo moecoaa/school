@@ -3,9 +3,6 @@
 // ==========================================
 
 const geneticsRaw = [
-  // =========================
-  // 9 КЛАСС — 1–16
-  // =========================
   {id:"genetika_01",topic:"Генетика",level:9,question:"Что называют геном?",answer:"Участок ДНК, несущий информацию о функциональном продукте."},
   {id:"genetika_02",topic:"Генетика",level:9,question:"Что такое аллели?",answer:"Разные варианты одного гена."},
   {id:"genetika_03",topic:"Генетика",level:9,question:"Как называется организм с двумя одинаковыми аллелями одного гена?",answer:"Гомозигота."},
@@ -22,7 +19,6 @@ const geneticsRaw = [
   {id:"genetika_14",topic:"Генетика",level:9,question:"Какой набор половых хромосом обычно у мужчины?",answer:"XY."},
   {id:"genetika_15",topic:"Генетика",level:9,question:"Как называется деление, уменьшающее число хромосом вдвое?",answer:"Мейоз."},
   {id:"genetika_16",topic:"Генетика",level:9,question:"Как называется наследование признаков, гены которых расположены в половых хромосомах?",answer:"Сцепленное с полом наследование."},
-
   {id:"genetika_17",topic:"Генетика",level:10,question:"При скрещивании Aa × Aa какова вероятность генотипа aa?",answer:"25%."},
   {id:"genetika_18",topic:"Генетика",level:10,question:"При скрещивании Aa × aa какова вероятность рецессивного фенотипа при полном доминировании?",answer:"50%."},
   {id:"genetika_19",topic:"Генетика",level:10,question:"Каково фенотипическое расщепление при Aa × Aa при полном доминировании?",answer:"3:1."},
@@ -40,7 +36,6 @@ const geneticsRaw = [
   {id:"genetika_31",topic:"Генетика",level:10,question:"Что отражает генетическая карта хромосомы?",answer:"Относительное расположение генов по частоте рекомбинации."},
   {id:"genetika_32",topic:"Генетика",level:10,question:"Какова вероятность генотипа Aa при скрещивании AA × aa?",answer:"100%."},
   {id:"genetika_33",topic:"Генетика",level:10,question:"Каково ожидаемое расщепление при AaBb × aabb при независимом наследовании?",answer:"1:1:1:1."},
-
   {id:"genetika_34",topic:"Генетика",level:11,question:"Сколько типов гамет образует AaBb при независимом наследовании?",answer:"4: AB, Ab, aB и ab."},
   {id:"genetika_35",topic:"Генетика",level:11,question:"Какова вероятность образования гаметы ab у AaBb при независимом наследовании?",answer:"25%."},
   {id:"genetika_36",topic:"Генетика",level:11,question:"Какова вероятность получить одновременно aa и bb при AaBb × AaBb?",answer:"1/16, или 6,25%."},
@@ -77,7 +72,6 @@ const evolutionRaw = [
   {id:"evol_14",topic:"Эволюция",level:9,question:"Приведи пример аналогичных органов.",answer:"Крылья птицы и насекомого: они выполняют сходную функцию, но имеют разное происхождение."},
   {id:"evol_15",topic:"Эволюция",level:9,question:"Что такое микроэволюция?",answer:"Эволюционные изменения внутри вида и его популяций."},
   {id:"evol_16",topic:"Эволюция",level:9,question:"Что такое макроэволюция?",answer:"Эволюционные изменения на уровне выше вида, приводящие к возникновению крупных систематических групп."},
-
   {id:"evol_17",topic:"Эволюция",level:10,question:"Как мутации участвуют в эволюции?",answer:"Создают новые наследственные варианты."},
   {id:"evol_18",topic:"Эволюция",level:10,question:"Почему естественный отбор действует на фенотип?",answer:"Выживание и размножение зависят от проявляющихся признаков, связанных с генотипом и средой."},
   {id:"evol_19",topic:"Эволюция",level:10,question:"Что такое дрейф генов?",answer:"Случайное изменение частот аллелей в популяции."},
@@ -95,7 +89,6 @@ const evolutionRaw = [
   {id:"evol_31",topic:"Эволюция",level:10,question:"Как искусственный отбор отличается от естественного?",answer:"При искусственном отборе человек выбирает организмы для размножения, при естественном преимущество определяется условиями среды."},
   {id:"evol_32",topic:"Эволюция",level:10,question:"Что такое адаптивная радиация?",answer:"Расхождение родственной группы на формы, приспособленные к разным экологическим нишам."},
   {id:"evol_33",topic:"Эволюция",level:10,question:"Почему антибиотикоустойчивые бактерии быстро распространяются при применении антибиотиков?",answer:"Устойчивые варианты выживают и оставляют больше потомства."},
-
   {id:"evol_34",topic:"Эволюция",level:11,question:"Как меняется частота аллеля при направленном отборе?",answer:"Она обычно увеличивается, если аллель повышает приспособленность в данных условиях."},
   {id:"evol_35",topic:"Эволюция",level:11,question:"Что такое стабилизирующий отбор?",answer:"Отбор, сохраняющий промежуточные значения признака и устраняющий крайние отклонения."},
   {id:"evol_36",topic:"Эволюция",level:11,question:"Что такое дизруптивный отбор?",answer:"Отбор, благоприятствующий крайним вариантам признака по сравнению с промежуточными."},
@@ -132,7 +125,6 @@ const cellRaw = [
   {id:"cell_14",topic:"Клетка",level:9,question:"Какой процесс обеспечивает образование гамет у многих животных?",answer:"Мейоз."},
   {id:"cell_15",topic:"Клетка",level:9,question:"Как называется перенос веществ через мембрану без прямых затрат энергии клетки по градиенту концентрации?",answer:"Пассивный транспорт."},
   {id:"cell_16",topic:"Клетка",level:9,question:"Как называется поступление воды через избирательно проницаемую мембрану?",answer:"Осмос."},
-
   {id:"cell_17",topic:"Клетка",level:10,question:"Какова функция эндоплазматической сети?",answer:"Участвует в синтезе и транспорте белков и липидов."},
   {id:"cell_18",topic:"Клетка",level:10,question:"Какова функция аппарата Гольджи?",answer:"Модификация, сортировка и упаковка белков и липидов."},
   {id:"cell_19",topic:"Клетка",level:10,question:"Какова основная функция лизосом?",answer:"Внутриклеточное переваривание веществ с помощью ферментов."},
@@ -150,7 +142,6 @@ const cellRaw = [
   {id:"cell_31",topic:"Клетка",level:10,question:"Где у эукариот происходит трансляция?",answer:"На рибосомах в цитоплазме, в том числе на шероховатой ЭПС."},
   {id:"cell_32",topic:"Клетка",level:10,question:"В какой фазе клеточного цикла обычно удваивается ДНК?",answer:"В S-фазе интерфазы."},
   {id:"cell_33",topic:"Клетка",level:10,question:"Чем митоз отличается от мейоза по числу делений?",answer:"Митоз включает одно деление, мейоз — два последовательных деления."},
-
   {id:"cell_34",topic:"Клетка",level:11,question:"Сколько молекул ДНК содержит хромосома после репликации, если она состоит из двух сестринских хроматид?",answer:"Две молекулы ДНК — по одной в каждой хроматиде."},
   {id:"cell_35",topic:"Клетка",level:11,question:"Сколько хромосом и хроматид в человеческой соматической клетке в G1-фазе?",answer:"46 хромосом и 46 хроматид."},
   {id:"cell_36",topic:"Клетка",level:11,question:"Сколько хромосом и хроматид в человеческой соматической клетке после репликации ДНК перед митозом?",answer:"46 хромосом и 92 хроматиды."},
@@ -187,7 +178,6 @@ const ecologyRaw = [
   {id:"eco_14",topic:"Экология",level:9,question:"Что такое экологическая ниша?",answer:"Совокупность условий, ресурсов и роли вида в экосистеме."},
   {id:"eco_15",topic:"Экология",level:9,question:"Что такое конкуренция?",answer:"Взаимодействие организмов, использующих ограниченный общий ресурс."},
   {id:"eco_16",topic:"Экология",level:9,question:"Что такое симбиоз?",answer:"Тесное совместное существование организмов разных видов; характер отношений при этом может различаться."},
-
   {id:"eco_17",topic:"Экология",level:10,question:"Что такое мутуализм?",answer:"Взаимодействие видов, при котором пользу получают оба партнёра."},
   {id:"eco_18",topic:"Экология",level:10,question:"Что такое паразитизм?",answer:"Взаимодействие, при котором паразит получает пользу, а хозяин испытывает вред."},
   {id:"eco_19",topic:"Экология",level:10,question:"Что такое комменсализм?",answer:"Взаимодействие, при котором один вид получает пользу, а другой заметно не испытывает ни пользы, ни вреда."},
@@ -205,7 +195,6 @@ const ecologyRaw = [
   {id:"eco_31",topic:"Экология",level:10,question:"Что такое эврибионтные организмы?",answer:"Организмы с широким диапазоном переносимости экологических факторов."},
   {id:"eco_32",topic:"Экология",level:10,question:"Что такое стенобионтные организмы?",answer:"Организмы с узким диапазоном переносимости определённых экологических факторов."},
   {id:"eco_33",topic:"Экология",level:10,question:"Как азот возвращается из органических остатков в экосистему?",answer:"Редуценты разлагают органику, а микроорганизмы участвуют в аммонификации, нитрификации и других процессах круговорота азота."},
-
   {id:"eco_34",topic:"Экология",level:11,question:"В цепи трава → кузнечик → лягушка → змея на уровень змеи поступило 20 кДж энергии. Если переход составляет 10%, сколько энергии было на уровне лягушки?",answer:"200 кДж."},
   {id:"eco_35",topic:"Экология",level:11,question:"В цепи продуценты накопили 50 000 кДж энергии. Сколько примерно энергии получат консументы второго порядка при передаче по 10% на каждом уровне?",answer:"Около 500 кДж, если консументы первого и второго порядка образуют два последовательных перехода."},
   {id:"eco_36",topic:"Экология",level:11,question:"Почему пестициды могут накапливаться в организмах верхних трофических уровней?",answer:"Устойчивые к разложению вещества могут накапливаться в тканях и усиливаться по концентрации при передаче по пищевой цепи."},
@@ -242,7 +231,6 @@ const metabolismRaw = [
   {id:"met_14",topic:"Обмен веществ",level:9,question:"Какова основная роль белков в организме?",answer:"Строительная, ферментативная, транспортная, регуляторная и другие функции."},
   {id:"met_15",topic:"Обмен веществ",level:9,question:"Какую роль выполняют жиры?",answer:"Запасают энергию, входят в состав мембран и обеспечивают теплоизоляцию."},
   {id:"met_16",topic:"Обмен веществ",level:9,question:"Зачем организму нужны витамины?",answer:"Они необходимы в небольших количествах для нормального протекания обмена веществ и других функций."},
-
   {id:"met_17",topic:"Обмен веществ",level:10,question:"Какие две основные стадии выделяют в энергетическом обмене?",answer:"Бескислородное расщепление и кислородное окисление; школьная схема также может выделять подготовительный этап."},
   {id:"met_18",topic:"Обмен веществ",level:10,question:"Сколько молекул АТФ непосредственно образуется при гликолизе одной молекулы глюкозы?",answer:"Чистый выход — 2 молекулы АТФ."},
   {id:"met_19",topic:"Обмен веществ",level:10,question:"Где у эукариот протекает цикл Кребса?",answer:"В матриксе митохондрий."},
@@ -260,7 +248,6 @@ const metabolismRaw = [
   {id:"met_31",topic:"Обмен веществ",level:10,question:"Какую роль играет инсулин в регуляции глюкозы крови?",answer:"Снижает концентрацию глюкозы в крови, усиливая её поступление в некоторые клетки и способствуя запасанию."},
   {id:"met_32",topic:"Обмен веществ",level:10,question:"Какую роль играет глюкагон?",answer:"Повышает концентрацию глюкозы в крови, в частности стимулируя распад гликогена в печени."},
   {id:"met_33",topic:"Обмен веществ",level:10,question:"В какой форме животные обычно запасают углеводы?",answer:"В виде гликогена."},
-
   {id:"met_34",topic:"Обмен веществ",level:11,question:"Какова роль световой фазы фотосинтеза?",answer:"Преобразование световой энергии в химическую, образование АТФ и восстановленного НАДФ; выделение кислорода при фотолизе воды."},
   {id:"met_35",topic:"Обмен веществ",level:11,question:"Где происходит цикл Кальвина?",answer:"В строме хлоропластов."},
   {id:"met_36",topic:"Обмен веществ",level:11,question:"Какой источник кислорода выделяется при фотосинтезе?",answer:"Вода, расщепляемая в световой фазе."},
@@ -297,7 +284,6 @@ const anatomyRaw = [
   {id:"anat_14",topic:"Анатомия",level:9,question:"Какую функцию выполняют почки?",answer:"Фильтруют кровь, выводят продукты обмена и участвуют в регуляции водно-солевого баланса."},
   {id:"anat_15",topic:"Анатомия",level:9,question:"Как называется структурно-функциональная единица почки?",answer:"Нефрон."},
   {id:"anat_16",topic:"Анатомия",level:9,question:"Какая часть нервной системы включает головной и спинной мозг?",answer:"Центральная нервная система."},
-
   {id:"anat_17",topic:"Анатомия",level:10,question:"Какова функция большого круга кровообращения?",answer:"Доставляет кислород и питательные вещества тканям и возвращает кровь к сердцу."},
   {id:"anat_18",topic:"Анатомия",level:10,question:"Какова функция малого круга кровообращения?",answer:"Обеспечивает газообмен крови в лёгких."},
   {id:"anat_19",topic:"Анатомия",level:10,question:"Какая камера сердца выталкивает кровь в аорту?",answer:"Левый желудочек."},
@@ -315,7 +301,6 @@ const anatomyRaw = [
   {id:"anat_31",topic:"Анатомия",level:10,question:"Что такое рефлекс?",answer:"Ответная реакция организма на раздражитель, осуществляемая при участии нервной системы."},
   {id:"anat_32",topic:"Анатомия",level:10,question:"Какая железа вырабатывает тироксин?",answer:"Щитовидная железа."},
   {id:"anat_33",topic:"Анатомия",level:10,question:"Какую роль выполняет инсулин?",answer:"Способствует снижению концентрации глюкозы в крови."},
-
   {id:"anat_34",topic:"Анатомия",level:11,question:"Какая часть нефрона фильтрует плазму крови?",answer:"Почечное тельце: капиллярный клубочек и капсула нефрона."},
   {id:"anat_35",topic:"Анатомия",level:11,question:"Что такое первичная моча?",answer:"Фильтрат плазмы крови, образующийся в почечном тельце; в норме он почти не содержит клеток и крупных белков."},
   {id:"anat_36",topic:"Анатомия",level:11,question:"Где происходит основная часть обратного всасывания веществ из первичной мочи?",answer:"В канальцах нефрона, особенно в проксимальном извитом канальце."},
@@ -336,7 +321,7 @@ const anatomyRaw = [
 ];
 
 // ==========================================
-// 🔄 УМНЫЙ АДАПТЕР: Рандом (1 или 2 правильных ответа)
+// 🔄 УМНЫЙ АДАПТЕР: 1 правильный ответ
 // ==========================================
 function adaptQuestions(raw) {
     const allCleanAnswers = raw.map(q => {
@@ -351,15 +336,11 @@ function adaptQuestions(raw) {
 
         // Каждый второй вопрос делаем с вариантами ответов
         if (index % 2 !== 0) {
-            // Рандом: 50% шанс, что будет 2 правильных ответа, 50% — что 1
-            const needTwoAnswers = Math.random() > 0.5;
-            
             let wrongOptions = new Set();
             let attempts = 0;
-            let neededWrong = needTwoAnswers ? 2 : 3; // Если 2 правильных, то 2 неправильных. Если 1 правильный, то 3 неправильных.
-
-            // Ищем нужное количество неправильных ответов
-            while (wrongOptions.size < neededWrong && attempts < 100) {
+            
+            // Ищем 3 случайных неправильных ответа
+            while (wrongOptions.size < 3 && attempts < 100) {
                 let randomAns = allCleanAnswers[Math.floor(Math.random() * allCleanAnswers.length)];
                 if (randomAns !== ans && !wrongOptions.has(randomAns)) {
                     wrongOptions.add(randomAns);
@@ -367,56 +348,21 @@ function adaptQuestions(raw) {
                 attempts++;
             }
 
-            let options = [ans];
-            let correctStrings = [ans];
-
-            // Если нужно два правильных, ищем второй ответ в этой же теме
-            if (needTwoAnswers) {
-                // Берем случайный вопрос из этой же темы (например, из Клетки)
-                const sameTopicQuestions = raw.filter(item => item.topic === q.topic && item.answer !== q.answer);
-                
-                if (sameTopicQuestions.length > 0) {
-                    let randomSameTopic = sameTopicQuestions[Math.floor(Math.random() * sameTopicQuestions.length)];
-                    let secondAns = randomSameTopic.answer;
-                    if (secondAns.endsWith('.')) secondAns = secondAns.slice(0, -1);
-                    
-                    options.push(secondAns);
-                    correctStrings.push(secondAns);
-                } else {
-                    // Если в теме всего 1 вопрос, просто делаем 1 правильный
-                    neededWrong = 3; 
-                }
-            }
-
-            // Пересчитываем, сколько неправильных нам реально нужно
-            neededWrong = 4 - options.length;
-            attempts = 0;
-            while (wrongOptions.size < neededWrong && attempts < 100) {
-                let randomAns = allCleanAnswers[Math.floor(Math.random() * allCleanAnswers.length)];
-                if (!correctStrings.includes(randomAns) && !wrongOptions.has(randomAns)) {
-                    wrongOptions.add(randomAns);
-                }
-                attempts++;
-            }
-
-            // Собираем все варианты и перемешиваем
-            options = options.concat(Array.from(wrongOptions));
+            // Собираем 4 варианта: 1 правильный и 3 неправильных
+            let options = [ans, ...Array.from(wrongOptions)];
+            
+            // Перемешиваем варианты
             options = options.sort(() => Math.random() - 0.5);
-
-            // Находим индексы правильных ответов
-            let finalCorrectIndexes = [];
-            options.forEach((opt, i) => {
-                if (correctStrings.includes(opt) && !finalCorrectIndexes.includes(i)) {
-                    if (finalCorrectIndexes.length < correctStrings.length) finalCorrectIndexes.push(i);
-                }
-            });
+            
+            // Находим индекс правильного ответа
+            let correctIndexes = [options.indexOf(ans)];
 
             return {
                 topic: `${q.level} класс: ${q.topic}`,
                 type: "options",
-                question: q.question + (needTwoAnswers && finalCorrectIndexes.length === 2 ? "<br><span style='font-size: 0.85em; opacity: 0.8; font-style: italic;'>(Выберите два правильных варианта)</span>" : ""),
+                question: q.question,
                 options: options,
-                correctIndexes: finalCorrectIndexes,
+                correctIndexes: correctIndexes,
                 explanation: q.answer
             };
         } else {
@@ -445,7 +391,7 @@ const questionsDB = {
 };
 
 // ==========================================
-// ⚙️ ЛОГИКА РАБОТЫ ТРЕНАЖЁРА (БЕЗ ИЗМЕНЕНИЙ)
+// ⚙️ ЛОГИКА РАБОТЫ ТРЕНАЖЁРА
 // ==========================================
 
 let currentQuestions = [];
@@ -474,6 +420,7 @@ const questionNav = document.getElementById('questionNav');
 const resultsScreen = document.getElementById('resultsScreen');
 const finalScore = document.getElementById('finalScore');
 const finalGrade = document.getElementById('finalGrade');
+const forceCorrectBtn = document.getElementById('forceCorrectBtn');
 
 // Запуск темы
 document.querySelectorAll('.topic-card').forEach(card => {
@@ -487,7 +434,7 @@ document.querySelectorAll('.topic-card').forEach(card => {
 
         currentQuestions = questionsDB[currentTopic];
         
-                currentQuestion = 0;
+        currentQuestion = 0;
         const saved = localStorage.getItem(`progress_${currentTopic}`);
         questionStatus = saved ? JSON.parse(saved) : [];
         secondsElapsed = 0;
@@ -572,6 +519,7 @@ function loadQuestion() {
     textInput.disabled = false;
     submitBtn.disabled = false;
     submitBtn.style.display = 'block';
+    forceCorrectBtn.style.display = 'none'; 
 
     const checkOptionsBtn = document.getElementById('checkOptionsBtn');
     checkOptionsBtn.style.display = 'none'; 
@@ -590,7 +538,7 @@ function loadQuestion() {
 
         if (q.correctIndexes && q.correctIndexes.length > 1) {
             checkOptionsBtn.style.display = 'block';
-            checkOptionsBtn.disabled = isAlreadyAnswered; // Блокируем, если уже отвечено
+            checkOptionsBtn.disabled = isAlreadyAnswered;
         }
 
         let selectedOptions = [];
@@ -605,16 +553,13 @@ function loadQuestion() {
             btn.className = 'option-btn';
             btn.textContent = opt.text;
             
-            // Если уже отвечено, сразу подсвечиваем правильные и неправильные
             if (isAlreadyAnswered) {
                 btn.classList.add('disabled');
                 if (opt.isCorrect) btn.classList.add('correct');
-                // Если пользователь ответил неправильно, можно было бы подсветить его выбор красным, 
-                // но для простоты просто блокируем кнопки.
             }
 
             btn.addEventListener('click', () => {
-                if (answered || isAlreadyAnswered) return; // Блокируем клик, если уже отвечено
+                if (answered || isAlreadyAnswered) return;
 
                 if (!q.correctIndexes || q.correctIndexes.length === 1) {
                     handleOptionClick(btn, opt.isCorrect, q);
@@ -703,39 +648,87 @@ function handleOptionClick(btn, isCorrect, q) {
     renderNav();
 }
 
+// ==========================================
+// 🧠 УМНАЯ НОРМАЛИЗАЦИЯ И СЛОВАРЬ СИНОНИМОВ
+// ==========================================
+
+const synonymGroups = [
+    ['генотип', 'днк', 'генетический', 'геном', 'наследственный'],
+    ['фенотип', 'признак', 'внешний', 'вид'],
+    ['изменять', 'менять', 'затрагивать', 'влиять', 'модифицировать'],
+    ['гены', 'ген', 'аллели', 'аллель'],
+    ['клетка', 'клетки', 'клеточный', 'клеточная'],
+    ['энергия', 'атф', 'энергетический'],
+    ['деление', 'размножение', 'митоз', 'мейоз'],
+    ['скрещивание', 'гибридизация', 'смешивание'],
+    ['появление', 'возникновение', 'образование', 'формирование'],
+    ['наследование', 'передача', 'получение'],
+    ['животные', 'звери', 'млекопитающие'],
+    ['растения', 'растительный', 'флора']
+];
+
+function getBaseWord(word) {
+    if (word.length > 5) return word.slice(0, -2);
+    if (word.length > 4) return word.slice(0, -1);
+    return word;
+}
+
+function isSynonyms(w1, w2) {
+    if (w1 === w2) return true;
+    for (let group of synonymGroups) {
+        if (group.some(s => s.startsWith(getBaseWord(w1))) && group.some(s => s.startsWith(getBaseWord(w2)))) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function normalizeAnswer(str) {
     if (str === null || str === undefined) return '';
     let s = String(str);
 
-    // 1. Приводим к нижнему регистру и заменяем ё → е
     s = s.toLowerCase().replace(/ё/g, 'е');
-
-    // 2. Убираем кавычки, скобки, угловые скобки по краям и внутри
-    s = s.replace(/[«»"'`()\[\]{}<>]/g, ' ');
-
-    // 3. Убираем знаки %, № и подобные
+    s = s.replace(/[«»"'`()\[\]{}<>]/g, ' '); 
     s = s.replace(/[%№]/g, ' ');
-
-    // 4. Заменяем запятую на точку ТОЛЬКО если это десятичный разделитель
-    //    (между цифрами), иначе — на пробел
-    s = s.replace(/(\d),(\d)/g, '$1.$2');   // 6,25 → 6.25
-    s = s.replace(/,/g, ' ');                // остальные запятые → пробел
-
-    // 5. Убираем точки в конце чисел и вообще одиночные точки
-    //    (но сохраняем десятичные: 6.25)
-    s = s.replace(/(?<!\d)\.|\.(?!\d)/g, ' '); // точка не между цифрами → пробел
-
-    // 6. Убираем пробелы вокруг : / - и ^
+    s = s.replace(/(\d),(\d)/g, '$1.$2');
+    s = s.replace(/,/g, ' ');
+    s = s.replace(/(?<!\d)\.|\.(?!\d)/g, ' ');
     s = s.replace(/\s*([:\/\-^])\s*/g, '$1');
-
-    // 7. Схлопываем пробелы и обрезаем
+    
+    s = s.replace(/\b(в|во|на|к|ко|из|от|до|по|за|под|над|о|об|что|как|это|при|с|со|и|а|но|или|не|ни)\b/g, ' ');
     s = s.replace(/\s+/g, ' ').trim();
 
-    return s;
+    let words = s.split(' ').filter(w => w.length > 1).map(getBaseWord);
+    words.sort();
+
+    return words.join(' ');
+}
+
+function isFuzzyMatch(str1, str2) {
+    let s1 = str1.replace(/[^а-яa-z0-9]/g, '');
+    let s2 = str2.replace(/[^а-яa-z0-9]/g, '');
+    
+    if (Math.abs(s1.length - s2.length) > 2) return false;
+
+    const track = Array(s2.length + 1).fill(null).map(() => Array(s1.length + 1).fill(null));
+    for (let i = 0; i <= s1.length; i += 1) track[0][i] = i;
+    for (let j = 0; j <= s2.length; j += 1) track[j][0] = j;
+    for (let j = 1; j <= s2.length; j += 1) {
+        for (let i = 1; i <= s1.length; i += 1) {
+            const indicator = s1[i - 1] === s2[j - 1] ? 0 : 1;
+            track[j][i] = Math.min(
+                track[j][i - 1] + 1,
+                track[j - 1][i] + 1,
+                track[j - 1][i - 1] + indicator
+            );
+        }
+    }
+    let maxErrors = s1.length > 5 ? 2 : 1;
+    return track[s2.length][s1.length] <= maxErrors;
 }
 
 // ==========================================
-// ✅ ПРОВЕРКА ВВОДА
+// ✅ УМНАЯ ПРОВЕРКА ВВОДА
 // ==========================================
 function handleInputSubmit() {
     if (answered) return;
@@ -747,31 +740,47 @@ function handleInputSubmit() {
     submitBtn.style.display = 'none';
     document.getElementById('skipBtn').style.display = 'none';
     
-    const userRaw = textInput.value;
-    const userAnswer = normalizeAnswer(userRaw);
+    let userRaw = textInput.value;
+    let normUser = normalizeAnswer(userRaw); 
     let isCorrectInput = false;
 
     if (q.correctAnswer instanceof RegExp) {
         isCorrectInput = q.correctAnswer.test(userRaw.trim());
     } else if (Array.isArray(q.correctAnswer)) {
-        // Сначала пробуем точное совпадение после нормализации
-        isCorrectInput = q.correctAnswer.some(ans => 
-            normalizeAnswer(ans) === userAnswer
-        );
+        isCorrectInput = q.correctAnswer.some(ans => {
+            let normAns = normalizeAnswer(ans);
+            
+            if (normAns === normUser) return true;
 
-        // Если не совпало — пробуем «мягкое» совпадение:
-        // пользователь ввёл один из вариантов, разделённых запятой/точкой с запятой
-        if (!isCorrectInput && userAnswer.length > 0) {
-            isCorrectInput = q.correctAnswer.some(ans => {
-                const parts = String(ans)
-                    .split(/[,;]/)
-                    .map(p => normalizeAnswer(p))
-                    .filter(p => p.length > 0);
-                return parts.includes(userAnswer);
+            let userWords = normUser.split(' ');
+            let ansWords = normAns.split(' ');
+            if (userWords.length === ansWords.length && userWords.every((w, i) => isFuzzyMatch(w, ansWords[i]))) return true;
+
+            let userWordsOriginal = normalizeAnswer(userRaw).split(' ');
+            let ansWordsOriginal = normalizeAnswer(ans).split(' ');
+
+            let matches = 0;
+            let totalUserWords = userWordsOriginal.length;
+            
+            userWordsOriginal.forEach(uw => {
+                let found = ansWordsOriginal.some(aw => isSynonyms(uw, aw) || isFuzzyMatch(uw, aw) || aw.includes(getBaseWord(uw)));
+                if (found) matches++;
             });
-        }
+
+            if (totalUserWords > 1 && (matches / totalUserWords) >= 0.7) {
+                return true;
+            }
+
+            if (totalUserWords >= 2) {
+                let shortUser = normUser.split(' ').filter(w => w.length > 3).join(' ');
+                let shortAns = normAns.split(' ').filter(w => w.length > 3).join(' ');
+                if (shortAns.includes(shortUser) && shortUser.length > 4) return true;
+            }
+
+            return false;
+        });
     } else if (typeof q.correctAnswer === 'string') {
-        isCorrectInput = normalizeAnswer(q.correctAnswer) === userAnswer;
+        isCorrectInput = normalizeAnswer(q.correctAnswer) === normUser;
     }
 
     if (isCorrectInput) {
@@ -784,8 +793,13 @@ function handleInputSubmit() {
         questionStatus[currentQuestion] = 'wrong';
         explanationText.textContent = "❌ Ошибка. " + q.explanation;
         explanationBox.className = 'explanation show wrong-bg';
+        
+        // Показываем кнопку ручного зачета!
+        if (q.type === 'input') {
+            forceCorrectBtn.style.display = 'block';
+        }
     }
-        localStorage.setItem(`progress_${currentTopic}`, JSON.stringify(questionStatus));
+    localStorage.setItem(`progress_${currentTopic}`, JSON.stringify(questionStatus));
     explanationBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     showNextBtn();
     renderNav();
@@ -831,6 +845,22 @@ nextBtn.addEventListener('click', () => {
     } else {
         showResults();
     }
+});
+
+// Кнопка ручного зачета
+forceCorrectBtn.addEventListener('click', () => {
+    questionStatus[currentQuestion] = 'correct';
+    
+    textInput.classList.remove('wrong', 'wrong-anim');
+    textInput.classList.add('correct', 'correct-anim');
+    
+    explanationText.textContent = "✅ Ответ засчитан вручную! " + currentQuestions[currentQuestion].explanation;
+    explanationBox.className = 'explanation show correct-bg';
+    
+    forceCorrectBtn.style.display = 'none';
+    localStorage.setItem(`progress_${currentTopic}`, JSON.stringify(questionStatus));
+    
+    renderNav();
 });
 
 function showResults() {
@@ -936,6 +966,5 @@ if (savedTheme === 'light') {
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     document.body.classList.toggle('light-mode');
-    // Сохраняем выбор пользователя
     localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
 });
