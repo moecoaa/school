@@ -3,112 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio Trainer | Подготовка к ЕГЭ</title>
-    <link rel="icon" type="image/svg+xml" href="icon.svg">
-    <link rel="apple-touch-icon" href="icon.svg">
+    <title>КиноРулетка | Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
 </head>
-<body class="dark-mode">
-    
-    <!-- Кнопка переключения темы -->
-    <button id="themeToggle" class="theme-switch">
-        <div class="toggle-thumb">
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </div>
-    </button>
+<body>
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
 
-    <!-- ЭКРАН 1: ГЛАВНОЕ МЕНЮ -->
-    <div class="main-menu" id="mainMenu">
-        <h1>🧬 Bio Trainer</h1>
-        <p>Выбери тему для подготовки к ЕГЭ</p>
-        
-        <div class="topics-grid">
-            <div class="topic-card" data-topic="genetics">
-                <div class="topic-icon">🧬</div>
-                <h3>Генетика</h3>
-                <p>Законы Менделя, задачи</p>
+    <div class="container">
+        <header class="main-header">
+            <div class="top-bar">
+                <button class="favorites-btn" onclick="toggleFavoritesView()" id="favToggleBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    Мои фильмы
+                </button>
             </div>
-            <div class="topic-card" data-topic="evolution">
-                <div class="topic-icon">🦕</div>
-                <h3>Эволюция</h3>
-                <p>Дарвин, естественный отбор</p>
+            <h1>Что посмотреть?</h1>
+            <p class="subtitle" id="mainSubtitle">Выбери жанр и доверься рулетке</p>
+        </header>
+
+        <!-- ФИЛЬТРЫ (скрываются в Моих фильмах) -->
+        <div class="filters-wrapper" id="filtersWrapper">
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-genre="all">Все подряд</button>
+                <button class="filter-btn" data-genre="28">Боевик</button>
+                <button class="filter-btn" data-genre="12">Приключения</button>
+                <button class="filter-btn" data-genre="35">Комедия</button>
+                <button class="filter-btn" data-genre="80">Криминал</button>
+                <button class="filter-btn" data-genre="18">Драма</button>
+                <button class="filter-btn" data-genre="14">Фэнтези</button>
+                <button class="filter-btn" data-genre="27">Ужасы</button>
+                <button class="filter-btn" data-genre="878">Фантастика</button>
+                <button class="filter-btn" data-genre="53">Триллер</button>
             </div>
-            <div class="topic-card" data-topic="cell">
-                <div class="topic-icon">🔬</div>
-                <h3>Клетка</h3>
-                <p>Органоиды, митоз, мейоз</p>
+        </div>
+
+        <!-- ЭКРАН ПРИВЕТСТВИЯ -->
+        <div class="welcome-screen" id="welcomeScreen">
+            <div class="welcome-content">
+                <h2 class="welcome-title" id="welcomeTitle">Нажми на кнопку ниже</h2>
+                <p class="welcome-subtitle" id="welcomeSubtitle">И мы подберем для тебя идеальный фильм на вечер</p>
+                <div class="arrow-down" id="welcomeArrow">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#ec4899" />
+                                <stop offset="100%" stop-color="#8b5cf6" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                    </svg>
+                </div>
             </div>
-            <div class="topic-card" data-topic="ecology">
-                <div class="topic-icon">🌿</div>
-                <h3>Экология</h3>
-                <p>Биогеоценоз, цепи питания</p>
+        </div>
+
+        <!-- СЕТКА МОИХ ФИЛЬМОВ (Появляется при клике на "Мои фильмы") -->
+        <div class="favorites-grid hidden" id="favoritesGrid">
+            <!-- Сюда скрипт будет добавлять карточки -->
+        </div>
+
+        <!-- ОСНОВНАЯ КАРТОЧКА ФИЛЬМА -->
+        <main class="movie-card hidden" id="movieCard">
+            <div class="poster-wrapper">
+                <div class="poster-bg" id="posterBg"></div>
+                <img id="poster" class="poster" src="" alt="Постер">
+                <div class="poster-overlay"></div>
+                <button class="fav-heart" id="favHeartBtn" onclick="toggleFavorite()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
             </div>
-            <div class="topic-card" data-topic="metabolism">
-                <div class="topic-icon">⚡</div>
-                <h3>Обмен веществ</h3>
-                <p>Анаболизм, катаболизм</p>
+            
+            <div class="info">
+                <div class="info-top">
+                    <span id="genre" class="genre-tag">ФИЛЬМ</span>
+                    <div class="meta-info">
+                        <span id="genreBadge" class="genre-badge" style="display: none;"></span>
+                        <span id="year" class="year">2024</span>
+                        <div id="rating" class="rating">0.0</div>
+                    </div>
+                </div>
+                
+                <div class="title-row">
+                    <h2 id="title" class="movie-title">Название</h2>
+                    <span id="adultBadge" class="adult-badge" style="display: none;">18+</span>
+                </div>
+                
+                <p id="description" class="description">Описание</p>
+                
+                <div class="actions" id="actionsContainer">
+                    <button class="btn btn-trailer" onclick="openTrailer()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        Смотреть трейлер
+                    </button>
+                    <button class="btn btn-vk" onclick="searchVK()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                        Смотреть фильм
+                    </button>
+                </div>
             </div>
-            <div class="topic-card" data-topic="anatomy">
-                <div class="topic-icon">❤️</div>
-                <h3>Анатомия</h3>
-                <p>Системы органов человека</p>
-            </div>
+        </main>
+
+        <!-- КНОПКА РУЛЕТКИ -->
+        <div class="spin-btn-container" id="spinBtnContainer">
+            <button class="spin-btn" id="spinBtn" onclick="spinRoulette()">
+                КРУТИТЬ РУЛЕТКУ
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path></svg>
+            </button>
         </div>
     </div>
-
-    <!-- ЭКРАН 2: ТЕСТ -->
-    <div class="quiz-app" id="quizApp" style="display: none;">
-        <div class="quiz-header">
-            <div class="header-top">
-                <h1 id="headerTitle">Тема</h1>
-                <button class="exit-btn" id="exitBtn">← Назад</button>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-                <span class="timer-text" id="timerText">⏱ 0:00</span>
-                <span class="progress-text" id="progressText">Вопрос 1 из 50</span>
-            </div>
-        </div>
-
-        <div class="question-nav" id="questionNav"></div>
-
-        <div class="quiz-card" id="quizContent">
-            <div class="quiz-main" style="width: 100%;">
-                <h2 id="questionText">Загрузка...</h2>
-                
-                <div class="options" id="optionsContainer"></div>
-                <button class="submit-btn" id="checkOptionsBtn" style="display: none; margin-top: 15px;">Проверить ответы</button>
-                
-                <div class="input-container" id="inputContainer" style="display: none;">
-                    <input type="text" id="textInput" class="text-input" placeholder="Впиши ответ сюда..." autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" inputmode="text">
-                    <button class="submit-btn" id="submitBtn">Проверить</button>
-                </div>
-
-                <div class="explanation" id="explanationBox">
-                    <p id="explanationText"></p>
-                </div>
-
-                <button class="skip-btn" id="skipBtn" style="display: none;">Пропустить вопрос</button>
-                <button class="skip-btn" id="forceCorrectBtn" style="display: none; color: #22c55e; border-color: #22c55e;">✅ Я ответил по смыслу верно</button>
-                <button class="next-btn" id="nextBtn">Следующий вопрос →</button>
-            </div>
-        </div>
-
-        <div class="results-screen" id="resultsScreen" style="display: none;">
-            <h2>🎉 Тест пройден!</h2>
-            <div class="score-circle"><span id="finalScore">0</span></div>
-            <div class="grade-box">
-                <h3>Твоя оценка:</h3>
-                <div class="grade-mark" id="finalGrade">5</div>
-            </div>
-            <button class="restart-btn" id="restartBtn">Вернуться в меню 🏠</button>
-        </div>
-    </div>
-
-    <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; display: none;"></canvas>
     <script src="script.js"></script>
 </body>
 </html>
