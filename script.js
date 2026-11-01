@@ -22,20 +22,15 @@ const genreMap = {
     "18": "Драма", "14": "Фэнтези", "27": "Ужасы", "878": "Фантастика", "53": "Триллер"
 };
 
-// Твой список (добавь сюда фильмы, которые хочешь видеть чаще)
+// Твой список
 const customMovies = [
-    // БОЕВИК (28)
     { title: "Бойцовский клуб", genre: "28" }, { title: "Джон Уик", genre: "28" },
     { title: "Дэдпул", genre: "28" }, { title: "Форсаж", genre: "28" },
     { title: "Быстрее пули", genre: "28" }, { title: "Особо опасен", genre: "28" },
     { title: "Гран Туризмо", genre: "28" },
-    // КОМЕДИЯ (35)
     { title: "Непосредственно Каха", genre: "35" },
-    // ФАНТАСТИКА (878)
     { title: "Аватар", genre: "878" },
-    // УЖАСЫ (27)
     { title: "Пятница 13", genre: "27" },
-    // ДРАМА (18)
     { title: "Форд против Феррари", genre: "18" }, { title: "Гонка", genre: "18" },
     { title: "F1", genre: "18" }
 ];
@@ -56,7 +51,9 @@ async function fetchFromKinopoisk(title) {
         const data = await res.json();
         
         if (data.films && data.films.length > 0) {
-            let film = data.films[0];
+            // Ищем именно фильм, а не сериал (чтобы на Аватара не выпал мультсериал)
+            let film = data.films.find(f => f.type === "FILM" || f.type === "MINI_SERIES") || data.films[0];
+            
             let finalTitle = film.nameRu || film.nameEn || title;
             if (finalTitle.includes("13-е")) finalTitle = "Пятница 13";
             return {
@@ -72,29 +69,44 @@ async function fetchFromKinopoisk(title) {
     } catch (error) { return null; }
 }
 
-// --- ОБНОВЛЕНИЕ КАРТОЧКИ (ЖЕСТКАЯ ОЧИСТКА) ---
+let currentCardRequestId = 0;
+
 async function updateCard(movie) {
     if (!movie) return;
     currentMovie = movie;
 
+    currentCardRequestId++;
+    const requestId = currentCardRequestId;
+
     const posterImg = document.getElementById('poster');
     const posterBg = document.getElementById('posterBg');
+    const titleEl = document.getElementById('title');
+    const descEl = document.getElementById('description');
+    const ratingEl = document.getElementById('rating');
+    const yearEl = document.getElementById('year');
+    const adultBadge = document.getElementById('adultBadge');
     
-    // 1. МГНОВЕННО УБИРАЕМ СТАРУЮ КАРТИНКУ
+    // 1. ОЧИСТКА
     posterImg.classList.remove('loaded');
     posterImg.src = ""; 
     posterBg.innerHTML = movie.title;
     posterBg.classList.remove('hidden');
 
-    // 2. ТЕКСТ
-    document.getElementById('title').textContent = movie.title;
-    const ratingEl = document.getElementById('rating');
+    // 2. БАЗОВЫЙ ТЕКСТ
+    titleEl.textContent = movie.title;
+    titleEl.classList.remove('blinking-text'); 
+    
+    // Рейтинг TMDB ставим сразу
     let tmdbRating = movie.vote_average || movie.rating;
-    ratingEl.textContent = (tmdbRating && tmdbRating > 0) ? tmdbRating.toFixed(1) : "";
-    let year = movie.release_date ? movie.release_date.split('-')[0] : (movie.year || "----");
-    document.getElementById('year').textContent = year;
-    document.getElementById('description').textContent = movie.overview || "Загрузка...";
+    ratingEl.textContent = (tmdbRating && tmdbRating > 0) ? tmdbRating.toFixed(1) : "—";
+    let year = movie.release_date ? movie.release_date.split('-')[0] : (movie.year || "—");
+    yearEl.textContent = year;
+    
+    // Если описание предзагружено, ставим сразу. Иначе - заглушка
+    descEl.textContent = movie.preloadedOverview || "Загрузка описания..."; 
+    adultBadge.style.display = 'none';
 
+    // Жанр
     const genreBadge = document.getElementById('genreBadge');
     if (currentGenre === '' && movie.genre_ids && movie.genre_ids.length > 0) {
         const firstGenreId = movie.genre_ids.find(id => genreMap[id.toString()]);
@@ -104,11 +116,24 @@ async function updateCard(movie) {
         } else { genreBadge.style.display = 'none'; }
     } else { genreBadge.style.display = 'none'; }
 
-    // 3. ЗАГРУЗКА НОВОЙ КАРТИНКИ
+    // 3. ЗАГРУЗКА ОБЛОЖКИ
     let initialPoster = movie.poster_path ? TMDB_IMG_URL + movie.poster_path : (movie.poster ? movie.poster : null);
+    
+    let isFriday13 = false;
+    if (movie.title && (movie.title.toLowerCase().includes("пятница 13") || movie.title.toLowerCase().includes("пятница, 13"))) {
+        isFriday13 = true;
+        initialPoster = "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg"; 
+        yearEl.textContent = "2009";
+        descEl.textContent = "Компания друзей - Уитни, Майк, Ричи, Аманда и Уэйд - заблудилась в лесах около заброшенного лагеря «Хрустальное озеро»...";
+        ratingEl.textContent = "5.9";
+        adultBadge.textContent = "18+";
+        adultBadge.style.display = 'inline-block';
+    }
+
     if (initialPoster) {
         const tempImg = new Image();
         tempImg.onload = () => {
+            if (requestId !== currentCardRequestId) return; 
             posterImg.src = tempImg.src;
             posterImg.classList.add('loaded');
             posterBg.classList.add('hidden');
@@ -116,17 +141,45 @@ async function updateCard(movie) {
         tempImg.src = initialPoster;
     }
 
-    // 4. КИНОПОИСК В ФОНЕ
-    fetchFromKinopoisk(movie.title).then(kpData => {
-        if (kpData && currentMovie && currentMovie.title === movie.title) {
-            if (kpData.overview) document.getElementById('description').textContent = kpData.overview;
-            if (kpData.rating && kpData.rating > 0) ratingEl.textContent = kpData.rating.toFixed(1);
-            const adultBadge = document.getElementById('adultBadge');
-            if (kpData.ageRating === "age18") { adultBadge.textContent = "18+"; adultBadge.style.display = 'inline-block'; }
-            else if (kpData.ageRating === "age16") { adultBadge.textContent = "16+"; adultBadge.style.display = 'inline-block'; }
-            else { adultBadge.style.display = 'none'; }
-        }
-    });
+    // 4. ЗАПРОС К КИНОПОИСКУ
+    if (!isFriday13) {
+        fetchFromKinopoisk(movie.title).then(kpData => {
+            if (requestId !== currentCardRequestId) return; 
+            
+            if (kpData) {
+                if (kpData.overview) descEl.textContent = kpData.overview;
+                // Обновляем рейтинг ТОЛЬКО если Кинопоиск его дал
+                if (kpData.rating && kpData.rating > 0) ratingEl.textContent = kpData.rating.toFixed(1);
+                if (kpData.year && kpData.year !== "----") yearEl.textContent = kpData.year;
+                
+                if (kpData.poster && !initialPoster) {
+                    const kpImg = new Image();
+                    kpImg.onload = () => {
+                        if (requestId !== currentCardRequestId) return;
+                        posterImg.src = kpImg.src;
+                        posterImg.classList.add('loaded');
+                        posterBg.classList.add('hidden');
+                    };
+                    kpImg.src = kpData.poster;
+                }
+
+                // УМНЫЙ ЗНАЧОК 18+
+                if (kpData.ageRating === "age18") { 
+                    adultBadge.textContent = "18+"; adultBadge.style.display = 'inline-block'; 
+                } else if (kpData.ageRating === "age16") { 
+                    adultBadge.textContent = "16+"; adultBadge.style.display = 'inline-block'; 
+                } else if (movie.adult || (movie.genre_ids && (movie.genre_ids.includes(27) || movie.genre_ids.includes(80)))) {
+                    adultBadge.textContent = "18+"; adultBadge.style.display = 'inline-block';
+                }
+            } else {
+                // Если Кинопоиск не ответил - оставляем описание TMDB
+                if (movie.overview) descEl.textContent = movie.overview;
+                if (movie.adult || (movie.genre_ids && movie.genre_ids.includes(27))) {
+                    adultBadge.textContent = "18+"; adultBadge.style.display = 'inline-block';
+                }
+            }
+        });
+    }
 
     updateFavHeart();
 }
@@ -245,6 +298,10 @@ function toggleFavoritesView() {
         
         renderFavoritesGrid();
         grid.classList.remove('hidden');
+        
+        // Добавляем класс для анимации
+        grid.classList.add('fade-in-view');
+        setTimeout(() => grid.classList.remove('fade-in-view'), 500); // Убираем класс, чтобы анимация срабатывала каждый раз
     } else {
         favBtn.classList.remove('active');
         favBtn.innerHTML = 'Мои фильмы';
@@ -262,6 +319,15 @@ function toggleFavoritesView() {
             spinBtn.style.display = 'flex';
             spinBtn.innerHTML = `КРУТИТЬ ЕЩЕ РАЗ`;
         }
+
+        // Добавляем класс для анимации появления обратно к рулетке
+        const rouletteElements = [filtersWrapper, welcomeScreen, card];
+        rouletteElements.forEach(el => {
+            if (!el.classList.contains('hidden')) {
+                el.classList.add('fade-in-view');
+                setTimeout(() => el.classList.remove('fade-in-view'), 500);
+            }
+        });
     }
 }
 
@@ -275,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const genreData = e.target.dataset.genre;
             currentGenre = genreData === 'all' ? '' : genreData;
             
-            // ЗАПУСКАЕМ СРАЗУ, НЕ ЖДЕМ ЗАГРУЗКИ
+            // Запускаем сразу, чтобы не было лагов
             spinRoulette();
         });
     });
@@ -295,7 +361,12 @@ async function spinRoulette() {
     card.classList.remove('fade-in');
     card.classList.add('blur-out');
 
-    // Берем то, что есть сейчас
+    // Если кэша нет, не ждем долго, а берем твои фильмы + то что успело загрузиться
+    if (!moviesCache[currentGenre]) {
+        const timeoutPromise = new Promise(resolve => setTimeout(resolve, 1500));
+        await Promise.race([preloadTMDBMovies(currentGenre), timeoutPromise]);
+    }
+
     let currentPool = [];
     let customFiltered = currentGenre === '' ? customMovies : customMovies.filter(m => m.genre === currentGenre);
     let tmdbMovies = moviesCache[currentGenre] || [];
@@ -304,11 +375,26 @@ async function spinRoulette() {
     currentPool = shuffleArray(combined).slice(0, 100);
     if (currentPool.length < 5) currentPool = customMovies; 
 
+    // ВЫБИРАЕМ ФИНАЛЬНЫЙ ФИЛЬМ ЗАРАНЕЕ
+    let finalMovie;
+    do {
+        finalMovie = currentPool[Math.floor(Math.random() * currentPool.length)];
+    } while (finalMovie.title === lastMovieTitle && currentPool.length > 1);
+    lastMovieTitle = finalMovie.title;
+
+    // ПРЕДЗАГРУЗКА ОПИСАНИЯ (Пока крутится анимация)
+    if (!finalMovie.preloadedOverview) {
+        fetchFromKinopoisk(finalMovie.title).then(kpData => {
+            if (kpData && kpData.overview) {
+                finalMovie.preloadedOverview = kpData.overview; 
+            }
+        });
+    }
+
     let counter = 0;
     const totalFlashes = 20; 
     const flashInterval = 60; 
 
-    // ЗАПУСКАЕМ АНИМАЦИЮ СРАЗУ
     const interval = setInterval(() => {
         const randomMovie = currentPool[Math.floor(Math.random() * currentPool.length)];
         titleEl.textContent = randomMovie.title;
@@ -318,46 +404,19 @@ async function spinRoulette() {
         if (counter >= totalFlashes) {
             clearInterval(interval);
             
-            // Пока анимация шла, пытаемся догрузить жанр, если его не было
-            if (!moviesCache[currentGenre] && !isFavoritesView) {
-                preloadTMDBMovies(currentGenre).then(() => {
-                    finalizeSpin();
-                });
-                setTimeout(() => { if (isSpinning) finalizeSpin(); }, 2000);
-            } else {
-                finalizeSpin();
-            }
+            // Когда анимация закончилась, показываем финальный фильм
+            updateCard(finalMovie); 
+            
+            card.classList.remove('blur-out');
+            card.classList.add('fade-in'); 
+            titleEl.classList.remove('blinking-text');
+            
+            btn.disabled = false;
+            btn.innerHTML = `КРУТИТЬ ЕЩЕ РАЗ`;
+            isSpinning = false;
+            isFirstSpin = false;
         }
     }, flashInterval);
-
-    function finalizeSpin() {
-        if (!isSpinning) return;
-        
-        let finalPool = [];
-        let customFiltered = currentGenre === '' ? customMovies : customMovies.filter(m => m.genre === currentGenre);
-        let tmdbMovies = moviesCache[currentGenre] || [];
-        let combined = [...customFiltered, ...tmdbMovies];
-        combined = Array.from(new Map(combined.map(item => [item.title, item])).values());
-        finalPool = shuffleArray(combined).slice(0, 100);
-        if (finalPool.length === 0) finalPool = customMovies;
-
-        let finalMovie;
-        do {
-            finalMovie = finalPool[Math.floor(Math.random() * finalPool.length)];
-        } while (finalMovie.title === lastMovieTitle && finalPool.length > 1);
-
-        lastMovieTitle = finalMovie.title;
-        updateCard(finalMovie); 
-        
-        card.classList.remove('blur-out');
-        card.classList.add('fade-in'); 
-        titleEl.classList.remove('blinking-text');
-        
-        btn.disabled = false;
-        btn.innerHTML = `КРУТИТЬ ЕЩЕ РАЗ`;
-        isSpinning = false;
-        isFirstSpin = false;
-    }
 }
 
 function openTrailer() {
