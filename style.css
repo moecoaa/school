@@ -186,6 +186,7 @@ h1 { font-family: 'Unbounded', sans-serif; font-size: 3.5rem; font-weight: 900; 
     height: 270px;
     object-fit: cover;
     display: block;
+    pointer-events: none;
 }
 
 .fav-item-title {
@@ -221,4 +222,116 @@ h1 { font-family: 'Unbounded', sans-serif; font-size: 3.5rem; font-weight: 900; 
 .fav-remove:hover {
     background: #ef4444;
     color: #fff;
+}
+/* ========================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (Оптимизация)       */
+/* ========================================= */
+
+@media (max-width: 850px) {
+    body {
+        padding: 20px 15px; /* Меньше отступы по краям */
+    }
+
+    h1 { font-size: 2.2rem; margin-bottom: 10px; }
+    .subtitle { font-size: 0.9rem; margin-bottom: 30px; }
+
+    /* Поиск/Фильтры становятся вертикальными */
+    .search-box, .filters {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .filter-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    #searchInput {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+
+    #searchBtn {
+        justify-content: center;
+        padding: 15px 20px;
+        font-size: 0.95rem;
+    }
+
+    /* Карточка фильма/книги становится вертикальной */
+    .movie-card, .book-card {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 20px;
+        border-radius: 20px;
+        /* Убираем тяжелый backdrop-filter на телефонах для производительности (чтобы не лагало) */
+        backdrop-filter: none;
+        background: rgba(18, 18, 28, 0.95); 
+    }
+
+    .poster-wrapper, .book-cover {
+        width: 180px;
+        height: 270px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .info, .book-info {
+        text-align: center;
+        width: 100%;
+    }
+
+    .title-row, #bookTitle {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+        justify-content: center;
+    }
+
+    .author, .description, .book-description { 
+        font-size: 0.95rem; 
+        line-height: 1.6;
+        text-align: left; /* Текст описания лучше оставить по левому краю для чтения */
+        margin-bottom: 20px;
+    }
+
+    /* Кнопки растягиваются на всю ширину */
+    .actions, .book-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .btn, .spin-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .spin-btn-container {
+        width: 100%;
+    }
+}
+
+/* Для очень маленьких экранов (iPhone SE и т.д.) */
+@media (max-width: 400px) {
+    h1 { font-size: 1.8rem; }
+    .poster-wrapper, .book-cover { width: 150px; height: 225px; }
+    .movie-title, #bookTitle { font-size: 1.3rem; }
+}
+/* ПЛАВНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ */
+.fade-in-view {
+    animation: smoothAppear 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes smoothAppear {
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
